@@ -12,19 +12,26 @@
     </sprites>
     <sprites name="Tiles">
       <sprite>sprites\spr_Grass</sprite>
-      <sprite>sprites\spr_Ground</sprite>
     </sprites>
+    <sprite>sprites\spr_Platform</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_sky</background>
   </backgrounds>
   <paths name="paths"/>
+  <scripts name="scripts">
+    <script>scripts\genLayer.gml</script>
+  </scripts>
   <objects name="objects">
     <object>objects\obj_Frog</object>
     <object>objects\obj_Wall</object>
+    <object>objects\obj_Ground</object>
+    <object>objects\obj_Platform</object>
+    <object>objects\obj_Controller</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\room0</room>
+    <room>rooms\Game</room>
+    <room>rooms\GameOver</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
