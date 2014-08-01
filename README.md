@@ -6,8 +6,9 @@ Get highscore.
 Have fun.
 
 TODO:
-Add more gameplay
-Add real graphics instead of placeholders
-Fix future bugs.
+=====
+Add more gameplay<br>
+Add real graphics instead of placeholders<br>
+Fix future bugs.<br>
 
 (c) SheepGames 2014
