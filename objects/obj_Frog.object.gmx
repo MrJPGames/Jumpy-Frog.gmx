@@ -33,10 +33,17 @@ vsp=0
 //Jump speed
 jspeed=8.4
 //walk speed
-wspeed=4
+wspeed=5
 
 //total yoverflow
 tyover=0
+//Is dead?
+dead=0
+
+
+//cheating is off (turn on with "Home" key)
+cheat=0
+
 </string>
           </argument>
         </arguments>
@@ -63,6 +70,15 @@ tyover=0
 if (vsp &lt; 10){vsp+=grav}
 
 k_space=keyboard_check_direct(vk_space)
+if cheat=1{
+    cx=x+16
+    if cx &gt; 480{
+        cx-=480
+    }
+    if place_free(cx,y-43){
+        k_space=1
+    }
+}
 if (place_meeting(x,y+1,obj_Wall)){
     vsp = k_space * -jspeed
 }
@@ -81,6 +97,9 @@ if (place_meeting(x+wspeed,y,obj_Wall)){
     while(!place_meeting(x+1,y,obj_Wall)){
         x+=1
     }
+    if place_meeting(x,y,obj_Wall){
+        KillFrog(2)
+    }
     wspeed=0
 }
 
@@ -90,16 +109,17 @@ if (place_meeting(x,y+vsp,obj_Wall)){
         y += sign(vsp)
     }
     if (sign(vsp) == -1){
-        KillFrog()
+        KillFrog(1)
     }
     vsp=0
 }
 
 x+=wspeed
 y+=vsp
-if (y &lt; room_height/2){
-    yover=room_height/2-y
-    y=room_height/2
+py=room_height/2
+if (y &lt; py){
+    yover=py-y
+    y=py
     obj_Wall.yoff+=yover
     tyover+=yover
     if tyover &gt;= 48{
@@ -108,12 +128,13 @@ if (y &lt; room_height/2){
         genLayer(-48+tyover)
     }
 }
-if (y &lt;= 208 &amp;&amp; global.points == 0){
+
+if (y+16 &lt;= 192 &amp;&amp; global.points == 0){
     global.points=1
-}
-if (y &lt;= 160 &amp;&amp; global.points == 1){
+}else if (y &lt;= 144 &amp;&amp; global.points == 1 and !dead){
     global.points=2
 }
+
 </string>
           </argument>
         </arguments>
@@ -161,11 +182,36 @@ if (y &gt; 272){
           <argument>
             <kind>1</kind>
             <string>if !place_meeting(0,y,obj_Wall){
-    x=0
+    if y+16 &lt; 272{
+        x=0
+    }
 }else{
     KillFrog()
 }
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="36">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (cheat == 0 or cheat == 2){cheat=1;room_speed=120}else{cheat=2;room_speed=30}
 </string>
           </argument>
         </arguments>

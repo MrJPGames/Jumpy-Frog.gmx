@@ -16,6 +16,7 @@
       <sprite>sprites\spr_Grass</sprite>
     </sprites>
     <sprite>sprites\spr_Platform</sprite>
+    <sprite>sprites\spr_BTN_Retry</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_sky</background>
@@ -35,6 +36,7 @@
       <object>objects\obj_Ground</object>
       <object>objects\obj_Platform</object>
     </objects>
+    <object>objects\BTN_retry</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\Game</room>
