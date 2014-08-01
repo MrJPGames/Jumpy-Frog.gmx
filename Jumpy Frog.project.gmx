@@ -9,6 +9,8 @@
     <sprites name="Frog">
       <sprite>sprites\spr_Frog_Jumping</sprite>
       <sprite>sprites\spr_Frog_Running</sprite>
+      <sprite>sprites\spr_Frog_Falling</sprite>
+      <sprite>sprites\spr_Frog_Dieing</sprite>
     </sprites>
     <sprites name="Tiles">
       <sprite>sprites\spr_Grass</sprite>
@@ -21,13 +23,18 @@
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\genLayer.gml</script>
+    <script>scripts\drawShadow.gml</script>
+    <script>scripts\KillFrog.gml</script>
   </scripts>
   <objects name="objects">
-    <object>objects\obj_Frog</object>
-    <object>objects\obj_Wall</object>
-    <object>objects\obj_Ground</object>
-    <object>objects\obj_Platform</object>
     <object>objects\obj_Controller</object>
+    <object>objects\obj_Frog</object>
+    <object>objects\obj_Frog_Dead</object>
+    <objects name="Walls">
+      <object>objects\obj_Wall</object>
+      <object>objects\obj_Ground</object>
+      <object>objects\obj_Platform</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\Game</room>
